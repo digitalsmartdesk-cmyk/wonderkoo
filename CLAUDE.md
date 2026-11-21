@@ -57,7 +57,10 @@ All other book links are placeholder `#` links. Update the `link` field in the S
 
 ## Signup form note
 The email signup form uses `window.claude.use('db')` for storing emails.
-The `db` capability is **not currently declared** in the published artifact, so form submissions fail silently. To fix: republish the artifact with `capabilities: {db: {}, user: {}}` declared.
+The artifact is published with `capabilities: {db: {rules: [...]}, user: {}}` declared (Version 4).
+Signups are stored in `signups/<uid>` with `{email, interests, updated}`.
+Only the owner can list all signups; each user reads/writes their own doc.
+The `config/buy` doc (collection `config`) overrides buy links at runtime — set it via ArtifactData to add new Amazon links without republishing.
 
 ## To update and publish via Claude Code
 ```
